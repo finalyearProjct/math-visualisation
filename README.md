@@ -9,3 +9,7 @@ The github repository will be downloaded in your system. Then copy all the codes
 python main.py
 
 The software application opens up showing the above mentioned mathematical topics. By clicking on each topic's buttons, you can see the corresponding topic's animation video and its description. 
+<br/><br/><br/><br/>
+To view the documentation of each code, open the index.html file from the corresponding Documentation_<topic_name> folder. <br/><br/>
+The file is present in the Documentation_<topic_name> -----> \_build -----> html -----> index.html<br/><br/>
+This file will come in the browser and there you can view the documentation. 
