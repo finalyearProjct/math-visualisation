@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>distribution module &#8212; Distribution 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-distribution">
+<span id="distribution-module"></span><h1>distribution module<a class="headerlink" href="#module-distribution" title="Permalink to this headline">¶</a></h1>
+<p>class for animating a distriution</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="distribution.animated_histo">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">distribution.</span></span><span class="sig-name descname"><span class="pre">animated_histo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a_ddist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/distribution.html#animated_histo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#distribution.animated_histo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>parameters:</p>
+<p>a_ddist(float)==
+discrete distriution</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="distribution.animated_histo.animate">
+<span class="sig-name descname"><span class="pre">animate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/distribution.html#animated_histo.animate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#distribution.animated_histo.animate" title="Permalink to this definition">¶</a></dt>
+<dd><p>The animate function is the main part of this object. it is called iteratively</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="distribution.animated_histo.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/distribution.html#animated_histo.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#distribution.animated_histo.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to start the animation</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">bin_division</span><span class="o">=</span><span class="mi">15</span>
+</pre></div>
+</div>
+<p>number of divisions for the histogram</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">holder</span><span class="o">=</span><span class="nb">list</span><span class="p">([])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">holder</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ddist</span><span class="o">.</span><span class="n">Draw</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Taking samples and storing it in the list</p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Distribution</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, abhi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/rst/distribution.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

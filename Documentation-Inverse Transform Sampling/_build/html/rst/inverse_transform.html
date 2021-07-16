@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>inverse_transform module &#8212; Inverse Transform 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-inverse_transform">
+<span id="inverse-transform-module"></span><h1>inverse_transform module<a class="headerlink" href="#module-inverse_transform" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="inverse_transform.ITS">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">inverse_transform.</span></span><span class="sig-name descname"><span class="pre">ITS</span></span><a class="reference internal" href="../_modules/inverse_transform.html#ITS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#inverse_transform.ITS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Inverse transform sampling class ,here we are using uniform distrubution to generate a Normal distribution. Inverse transform is the basis for such a technique. This is made for just a demonstration  purpose.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="inverse_transform.ITS.animate">
+<span class="sig-name descname"><span class="pre">animate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/inverse_transform.html#ITS.animate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#inverse_transform.ITS.animate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is the main function,which is responsible for sampling from uniform distribution then use inverse of the CDF of gaussian ditsribution to generate normal distribution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inverse_transform.ITS.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/inverse_transform.html#ITS.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#inverse_transform.ITS.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function that is used to trigger the start of ITS  simulation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">ss_0</span><span class="o">=</span><span class="n">ss</span>
+</pre></div>
+</div>
+<p>This is the  statistics module,which is used for plotting the shape of normal distribution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">y_values_0</span><span class="o">=</span><span class="n">ss</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_values</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For plotting the cumulative distribution function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inverse_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ss_0</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Mapping with the help of inverse CDF.</p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Inverse Transform</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, abhi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/rst/inverse_transform.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
