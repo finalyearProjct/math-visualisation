@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>monto &#8212; monte_carlo 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for monto</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Monte_carlo object</span>
+
+<span class="sd">This object creates an animation on how monte carlo works by estimating the value of pi</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Monte_carlo"><a class="viewcode-back" href="../rst/monto.html#monto.Monte_carlo">[docs]</a><span class="k">class</span> <span class="nc">Monte_carlo</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    parameters:</span>
+
+<span class="sd">        time_interval(float):time interval for the animation</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">time_interval</span><span class="p">):</span>
+
+             <span class="c1"># Constructor</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">=</span><span class="n">np</span>
+
+        <span class="c1"># Creating instance of numpy object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">=</span><span class="n">plt</span>
+        <span class="c1"># Creating instance of pyplot object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_gap</span><span class="o">=</span><span class="n">time_interval</span>
+        <span class="c1"># saving the time gap in this variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radi</span><span class="o">=</span><span class="mi">25</span>
+        <span class="c1"># Setting radi of BIG circle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax_X_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">([])</span>
+        <span class="c1"># Creating a blank list for appending X value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax_Y_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">([])</span>
+        <span class="c1"># Creating a blank list for appending Y value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax_Y_pi</span> <span class="o">=</span> <span class="nb">list</span><span class="p">([])</span>
+        <span class="c1"># constant pi value list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">axes</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Creating subplots</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Monte Carlo simulation - Demo&quot;</span><span class="p">)</span>
+        <span class="c1"># Creating a BIG title on the TOP part</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="c1"># Setting Y-Limit for the plot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="c1"># Setting X-Limit for the plot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Setting len to breadth ratio 1</span>
+        <span class="n">Drawing_colored_circle</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">)</span>
+        <span class="c1"># Taking a sample</span>
+        <span class="n">Drawing_uncolored_circle</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="mi">25</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
+        <span class="c1"># Drawing the BIG circle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">Drawing_colored_circle</span><span class="p">)</span>
+        <span class="c1"># Inserting the drawn circle into the plot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">Drawing_uncolored_circle</span><span class="p">)</span>
+        <span class="c1"># Inserting the drawn circle into the plot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s1">&#39;Sampling Process&#39;</span><span class="p">)</span>
+        <span class="c1"># Setting the title for the first plot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hit</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># Total Picks</span>
+
+<div class="viewcode-block" id="Monte_carlo.animate"><a class="viewcode-back" href="../rst/monto.html#monto.Monte_carlo.animate">[docs]</a>    <span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        The animate function is the main part of this obj,it is called iteratively</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">+</span><span class="mi">1</span>
+        <span class="c1"># Incrementing the total pick</span>
+        <span class="n">a</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Choosing a random point</span>
+        <span class="n">Drawing_colored_circle</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mf">1.5</span><span class="p">)</span>
+        <span class="c1"># Drawing circle with center at that point</span>
+        <span class="n">mag</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">25</span><span class="p">)</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">25</span><span class="p">))</span>
+        <span class="c1"># Computing L-2 Norm</span>
+        <span class="k">if</span> <span class="n">mag</span><span class="o">&lt;</span><span class="bp">self</span><span class="o">.</span><span class="n">radi</span><span class="p">:</span>               <span class="c1"># Checking of it is OUTSIDE or INSIDE</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hit</span><span class="o">+</span><span class="mi">1</span>
+            <span class="c1"># If TRUE increment the hit</span>
+        <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hit</span><span class="o">*</span><span class="mi">50</span><span class="o">*</span><span class="mi">50</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radi</span><span class="p">))</span>
+        <span class="c1"># Estimating Pi value from Area(Square),Area(Circle),Total hit,Total picks</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax_Y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="c1"># Appending that to the list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax_X_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="p">)</span>
+        <span class="c1"># incrementing the  X list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax_Y_pi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+        <span class="c1"># inserting 3.14 to draw straight line</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">Drawing_colored_circle</span><span class="p">)</span>
+        <span class="c1"># Inserting the drawn circle into the plot</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="c1"># Clearing the plot after each iteration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+        <span class="c1"># Setting Y-LIMIT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Re-Setting X-LIMIT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">.5</span><span class="p">))</span>
+        <span class="c1"># Setting Y-TICKS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax_X_list</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ax_Y_list</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span><span class="s1">&#39;Estimated value&#39;</span><span class="p">)</span>
+        <span class="c1"># Plotting Estimated value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax_X_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax_Y_pi</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span><span class="s1">&#39;Target value&#39;</span><span class="p">)</span>
+        <span class="c1"># Plotting Reference value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Estimation&#39;</span><span class="p">)</span>
+        <span class="c1"># Setting Y-LABEL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Samplng time&#39;</span><span class="p">)</span>
+        <span class="c1"># Setting X-LABEL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s1">&#39;Graphical Representation&#39;</span><span class="p">)</span>
+        <span class="c1"># Setting TITLE for the plot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span></div>
+        <span class="c1"># Displaying the Legend</span>
+
+<div class="viewcode-block" id="Monte_carlo.start"><a class="viewcode-back" href="../rst/monto.html#monto.Monte_carlo.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Used to start the animation</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ani</span><span class="o">=</span><span class="n">anim</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">animate</span><span class="p">,</span><span class="n">interval</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time_gap</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creating animation function according to the TIME_GAP</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div></div>
+        <span class="c1"># Show the plot</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">monte_carlo</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, abhi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
