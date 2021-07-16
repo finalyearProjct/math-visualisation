@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pca_main module &#8212; pca_main 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-pca_main">
+<span id="pca-main-module"></span><h1>pca_main module<a class="headerlink" href="#module-pca_main" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pca_main.PCA">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pca_main.</span></span><span class="sig-name descname"><span class="pre">PCA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patient_object_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pca_main.html#PCA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pca_main.PCA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Principal Component Analysis Object</p>
+<p>Parameters:</p>
+<p>patient_object_list ==  Patient object list form the patient class</p>
+<p>dimension == number of dimension to be reduced</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pca_main.PCA.Computational_part">
+<span class="sig-name descname"><span class="pre">Computational_part</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pca_main.html#PCA.Computational_part"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pca_main.PCA.Computational_part" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computational part</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pca_main.PCA.Start">
+<span class="sig-name descname"><span class="pre">Start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pca_main.html#PCA.Start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pca_main.PCA.Start" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is used to start the object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pca_main.PCA.animate">
+<span class="sig-name descname"><span class="pre">animate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pca_main.html#PCA.animate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pca_main.PCA.animate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Animate function is called iteratively</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pca_main.PCA.boot_induvidual_plot">
+<span class="sig-name descname"><span class="pre">boot_induvidual_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pca_main.html#PCA.boot_induvidual_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pca_main.PCA.boot_induvidual_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setting up induvidual plots</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">list_patient_names</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_patient</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>creating ID for patient</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">list_attributes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">list_patient</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_Attributes</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Getting attributes from a patient object</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">plot_traits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">plt_0</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">))])</span>
+</pre></div>
+</div>
+<p>creatng list of  plot objects</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_patient</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">get_Values</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Accessing the values and appending this to the created list</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">X_transp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Transposing the vector</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">X_meaned</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">cov_mat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_meaned</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">eigen_values</span><span class="p">,</span> <span class="n">eigen_vectors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cov_mat</span><span class="p">)</span>
+<span class="n">sorted_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">np_0</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">eigen_values</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">sorted_eigenvalue</span> <span class="o">=</span> <span class="n">eigen_values</span><span class="p">[</span><span class="n">sorted_index</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">sorted_eigenvectors</span> <span class="o">=</span> <span class="n">eigen_vectors</span><span class="p">[:,</span> <span class="n">sorted_index</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This is the Computational part. Here the meancentering of the data is done,
+then the matrix Covariance and eigen values are calculated</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">X_reduced_transp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_reduced</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is the final reduced Vector</p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">pca_main</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, abhi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/rst/pca_main.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
