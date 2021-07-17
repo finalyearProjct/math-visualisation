@@ -5,7 +5,7 @@ This is a part of our tool that we built for our Final Year Btech project. Math 
 To access this software, download the GUI_Tkinter, Linear Algebra and Probability folders either by downloading them directly from here or by using the below command:<br/><br/>
 git clone https://github.com/finalyearProjct/math-visualisation.git
 
-The github repository will be downloaded in your system. Then copy all the codes from Linear Algebra and Probabilities folder to the GUI_Tkinter folder and run this command from this same folder:<br/><br/>
+The github repository will be downloaded in your system. Then copy all the codes from Linear Algebra and Probability folder to the GUI_Tkinter folder and run this command from this same folder:<br/><br/>
 python main.py
 
 The software application opens up showing the above mentioned mathematical topics. By clicking on each topic's buttons, you can see the corresponding topic's animation video and its description. 
